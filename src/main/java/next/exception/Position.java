@@ -4,15 +4,11 @@ public class Position {
 	private int x;
 	private int y;
 
-	public Position(String position) throws InValidPositionException {
+	public Position(String position) {
 		x = (int) (position.charAt(0) - 'a');
 		y = Integer.parseInt(position.substring(1)) - 1;
-		exceptionCondition();
-	}
-
-	private void exceptionCondition() throws InValidPositionException {
 		if (x < 0 || x > 7 || y < 0 || y > 7) {
-			throw new InValidPositionException();
+			throw new IllegalArgumentException("좌표값은 0보다 작거나 7보다 클 수 없습니다.");
 		}
 	}
 
